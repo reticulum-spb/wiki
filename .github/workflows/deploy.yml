@@ -20,6 +20,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Install latest mdbook
         run: |
@@ -28,6 +30,9 @@ jobs:
           mkdir mdbook
           curl -sSL $url | tar -xz --directory=./mdbook
           echo `pwd`/mdbook >> $GITHUB_PATH
+      - name: Install mdbook-last-changed
+        run: cargo install mdbook-last-changed --version 0.4.0 --locked
+
       - name: Build Book
         run: |
           mdbook build

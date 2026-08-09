@@ -2,3 +2,14 @@
 title = "Reticulum-SPb Wiki"
 authors = ["NekoAlex"]
 language = "en"
+
+[build]
+extra-watch-dirs = ["."]
+
+[preprocessor.last-changed]
+command = "mdbook-last-changed"
+renderer = ["html"]
+
+[output.html]
+git-repository-url = "https://github.com/reticulum-spb/wiki"
+additional-css = ["custom.css"]
